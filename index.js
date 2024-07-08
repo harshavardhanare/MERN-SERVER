@@ -62,8 +62,32 @@ console.log('server'))
  {
   return 1;
  }
-test();
+ beforeAll(async()=>{
+  await StartServer()
+  
+ })
 
- StartServer()
+test('graphQL server atarted and running',async()=>{
+  const res =await request(app)
+  .post('/graphql').send({
+  query:`query{
+  _schema{
+  queryType{
+  name
+    }
+
+      
+}
+  }`
+
+
+  })
+  except(res.statusCode).toBe(200)
+  except(res.body.data._schema.queryType.name).toBe('Query')
+  }
+
+);
+
+
 
 
