@@ -58,6 +58,11 @@ app.listen(port,()=>
 console.log('server'))
 
  }
+ function test()
+ {
+  return 1;
+ }
+test();
 
  StartServer()
 
